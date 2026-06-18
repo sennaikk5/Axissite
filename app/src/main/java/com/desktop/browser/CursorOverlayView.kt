@@ -24,25 +24,38 @@ class CursorOverlayView @JvmOverloads constructor(
         style = Paint.Style.FILL
     }
 
+    private var enabled = true
+
     var cursorX = 300f
     var cursorY = 500f
-    var cursorEnabled = true
+
+    fun setEnabled(value: Boolean) {
+        enabled = value
+        invalidate()
+    }
+
+    fun isEnabledCursor(): Boolean = enabled
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        if (!cursorEnabled) return
+
+        if (!enabled) return
 
         canvas.drawCircle(cursorX, cursorY, 24f, glowPaint)
         canvas.drawCircle(cursorX, cursorY, 6f, cursorPaint)
     }
 
     fun moveTo(x: Float, y: Float) {
+        if (!enabled) return
+
         cursorX = x.coerceIn(0f, width.toFloat())
         cursorY = y.coerceIn(0f, height.toFloat())
         invalidate()
     }
 
     fun handleTouch(event: MotionEvent): Boolean {
+        if (!enabled) return false
+
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN,
             MotionEvent.ACTION_MOVE -> {
