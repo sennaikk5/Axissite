@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <com.desktop.browser.DesktopWebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.desktop.browser.CursorOverlayView
+        android:id="@+id/cursorOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="#CC111111">
+
+        <EditText
+            android:id="@+id/addressBar"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:hint="Cole um link"
+            android:singleLine="true"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#88FFFFFF"
+            android:background="#22FFFFFF" />
+
+        <Button
+            android:id="@+id/openBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Abrir" />
+
+        <Button
+            android:id="@+id/desktopBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="PC" />
+
+        <Button
+            android:id="@+id/mouseBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Mouse" />
+
+        <Button
+            android:id="@+id/fullscreenBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Full" />
+    </LinearLayout>
+
+</FrameLayout>
