@@ -29,7 +29,7 @@ class DesktopWebView @JvmOverloads constructor(
             useWideViewPort = true
             builtInZoomControls = true
             displayZoomControls = false
-            supportZoom = true
+            setSupportZoom(true)
             javaScriptCanOpenWindowsAutomatically = true
             setSupportMultipleWindows(true)
             cacheMode = WebSettings.LOAD_DEFAULT
