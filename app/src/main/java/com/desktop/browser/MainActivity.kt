@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var webView: DesktopWebView
     private lateinit var cursorOverlay: CursorOverlayView
     private lateinit var addressBar: EditText
+
     private var desktopMode = true
     private var mouseMode = true
 
@@ -43,8 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         mouseBtn.setOnClickListener {
             mouseMode = !mouseMode
-            cursorOverlay.enabled = mouseMode
-            cursorOverlay.invalidate()
+            cursorOverlay.setCursorEnabled(mouseMode)
         }
 
         fullscreenBtn.setOnClickListener {
@@ -80,7 +80,9 @@ class MainActivity : AppCompatActivity() {
     private fun setupFullscreen() {
         window.setDecorFitsSystemWindows(false)
         val controller = window.insetsController
-        controller?.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+        controller?.hide(
+            WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars()
+        )
         controller?.systemBarsBehavior =
             WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
     }
@@ -90,6 +92,8 @@ class MainActivity : AppCompatActivity() {
         if (trimmed.isBlank()) return BrowserSettings.DEFAULT_HOME
         if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) return trimmed
         if (trimmed.contains('.')) return "https://$trimmed"
-        return "https://www.google.com/search?q=${java.net.URLEncoder.encode(trimmed, "UTF-8")}"
+        return "https://www.google.com/search?q=${
+            java.net.URLEncoder.encode(trimmed, "UTF-8")
+        }"
     }
 }
