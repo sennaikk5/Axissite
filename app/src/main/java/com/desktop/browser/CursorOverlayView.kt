@@ -26,11 +26,12 @@ class CursorOverlayView @JvmOverloads constructor(
 
     var cursorX = 300f
     var cursorY = 500f
-    var enabled = true
+    var cursorEnabled = true
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        if (!enabled) return
+        if (!cursorEnabled) return
+
         canvas.drawCircle(cursorX, cursorY, 24f, glowPaint)
         canvas.drawCircle(cursorX, cursorY, 6f, cursorPaint)
     }
